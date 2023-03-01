@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  my_service:
+    image: my_image
+    networks:
+      - my_network
+    volumes:
+      - my_volume:/app/data
+
+networks:
+  my_network:
+    external:
+      name: common_my_network
+
+volumes:
+  my_volume:
+    external:
+      name: common_my_volume
+
+extends:
+  file: common.yml
+  service: common_services
