@@ -10,6 +10,14 @@ x-environment: &default-tz-puid-pgid
 #  PUID: $PUID
 #  PGID: $PGID
 
+# Keys common to some of the dependent services/apps
+x-common-keys-apps: &common-keys-apps
+  networks:
+    - t2_proxy
+  security_opt:
+    - no-new-privileges:true
+  restart: unless-stopped
+
 networks:
   my_network:
     driver: bridge
